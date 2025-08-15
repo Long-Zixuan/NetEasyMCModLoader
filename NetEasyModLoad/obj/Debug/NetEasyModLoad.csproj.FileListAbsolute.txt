@@ -1,0 +1,10 @@
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\obj\Debug\NetEasyModLoad.csproj.AssemblyReference.cache
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\obj\Debug\NetEasyModLoad.Form1.resources
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\obj\Debug\NetEasyModLoad.Properties.Resources.resources
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\obj\Debug\NetEasyModLoad.csproj.GenerateResource.cache
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\obj\Debug\NetEasyModLoad.csproj.CoreCompileInputs.cache
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\bin\Debug\NetEasyModLoad.exe.config
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\bin\Debug\NetEasyModLoad.exe
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\bin\Debug\NetEasyModLoad.pdb
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\obj\Debug\NetEasyModLoad.exe
+C:\Users\Long_\source\repos\NetEasyModLoad\NetEasyModLoad\obj\Debug\NetEasyModLoad.pdb
