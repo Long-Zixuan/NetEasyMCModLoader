@@ -32,6 +32,11 @@ namespace NetEasyModLoad
                 FileStream fs = File.Create(loaderExePath + @"\config.ini");
                 fs.Close();
             }
+            DirectoryInfo modDinfo = new DirectoryInfo(@"\mods");
+            if (!modDinfo.Exists)
+            {
+                modDinfo.Create();
+            }
             label3.Text = "当前游戏文件夹："+ File.ReadAllText(configPath);
             gamePath = File.ReadAllText(configPath);
             mods = Directory.GetFiles(loaderExePath+@"\mods", "*.jar");
