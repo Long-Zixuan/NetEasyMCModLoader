@@ -21,11 +21,13 @@ namespace NetEasyModLoad
         string configPath = "";
 
         string[] mods;
+
         public Form1()
         {
             InitializeComponent();
             
             loaderExePath = System.Windows.Forms.Application.StartupPath;
+
             configPath = loaderExePath + @"\config.ini";
             if (!File.Exists(configPath))
             {
@@ -37,8 +39,17 @@ namespace NetEasyModLoad
             {
                 modDinfo.Create();
             }
-            label3.Text = "当前游戏文件夹："+ File.ReadAllText(configPath);
-            gamePath = File.ReadAllText(configPath);
+            //label3.Text = "当前游戏文件夹："+ File.ReadAllText(configPath);
+            gamePath = IniFileHandler.Instance.ReadValue("config", "gamePath", configPath);
+            if (gamePath == "" || gamePath == null)
+            {
+                label3.Text = "请先设置游戏文件夹";
+            }
+            else
+            {
+                label3.Text = "当前游戏文件夹：" + gamePath;
+            }
+            //gamePath = File.ReadAllText(configPath);
             mods = Directory.GetFiles(loaderExePath+@"\mods", "*.jar");
             //MessageBox.Show(mods[0]);
             //MessageBox.Show(loaderExePath);
@@ -48,13 +59,14 @@ namespace NetEasyModLoad
         {
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             // folderBrowser.SelectedPath = webpath;
-            folderBrowser.Description = "请选择网易我的世界模组文件夹";
+            folderBrowser.Description = "请选择网易我的世界游戏文件夹";
             //folderBrowser.ShowNewFolderButton = true;
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
                 gamePath = folderBrowser.SelectedPath + @"\Game\.minecraft\mods";
                 label3.Text = "当前游戏文件夹："+gamePath;
-                File.WriteAllText(configPath, gamePath);
+                //File.WriteAllText(configPath, gamePath);
+                IniFileHandler.Instance.WriteValue("config", "gamePath", gamePath, configPath);
             }
                         
         }
