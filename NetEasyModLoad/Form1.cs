@@ -78,7 +78,7 @@ namespace NetEasyModLoad
                 MessageBox.Show("文件夹不存在");
                 return;
             }
-            label2.Text = "开始加载";
+            label2.Text = "加载中";
            
             Thread thread = new Thread(new ThreadStart(loadJarLogic));
             thread.Start();
@@ -89,6 +89,7 @@ namespace NetEasyModLoad
             string filePath = gamePath + "/isLoaded.jar";
             FileStream fs = File.Create(filePath);
             fs.Close();
+            int dotCount = 0;
             while (true)
             {
                 if (!File.Exists(filePath))
@@ -108,6 +109,13 @@ namespace NetEasyModLoad
                         }
                     }
                     break;
+                }
+                label2.Text += ".";
+                dotCount++;
+                if (dotCount > 5) 
+                {
+                    dotCount = 0;
+                    label2.Text = "加载中";
                 }
                 Thread.Sleep(1000);
             }
