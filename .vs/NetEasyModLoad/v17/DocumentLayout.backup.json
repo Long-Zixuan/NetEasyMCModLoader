@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{774BD3F1-9A07-47BA-BEC4-301ACA38DBC8}|NetEasyModLoad\\NetEasyModLoad.csproj|C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\neteasymodload\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{774BD3F1-9A07-47BA-BEC4-301ACA38DBC8}|NetEasyModLoad\\NetEasyModLoad.csproj|solutionrelative:neteasymodload\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{774BD3F1-9A07-47BA-BEC4-301ACA38DBC8}|NetEasyModLoad\\NetEasyModLoad.csproj|C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\neteasymodload\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{774BD3F1-9A07-47BA-BEC4-301ACA38DBC8}|NetEasyModLoad\\NetEasyModLoad.csproj|solutionrelative:neteasymodload\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{774BD3F1-9A07-47BA-BEC4-301ACA38DBC8}|NetEasyModLoad\\NetEasyModLoad.csproj|c:\\users\\long_\\source\\repos\\neteasymodload\\neteasymodload\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{774BD3F1-9A07-47BA-BEC4-301ACA38DBC8}|NetEasyModLoad\\NetEasyModLoad.csproj|solutionrelative:neteasymodload\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{774BD3F1-9A07-47BA-BEC4-301ACA38DBC8}|NetEasyModLoad\\NetEasyModLoad.csproj|c:\\users\\long_\\source\\repos\\neteasymodload\\neteasymodload\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{774BD3F1-9A07-47BA-BEC4-301ACA38DBC8}|NetEasyModLoad\\NetEasyModLoad.csproj|solutionrelative:neteasymodload\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{774BD3F1-9A07-47BA-BEC4-301ACA38DBC8}|NetEasyModLoad\\NetEasyModLoad.csproj|C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\neteasymodload\\inifilehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,7 +29,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,19 +38,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Form1.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\NetEasyModLoad\\Form1.cs",
+              "RelativeDocumentMoniker": "NetEasyModLoad\\Form1.cs",
+              "ToolTip": "C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\NetEasyModLoad\\Form1.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "NetEasyModLoad\\Form1.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T03:19:59.221Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\NetEasyModLoad\\Form1.cs",
               "RelativeDocumentMoniker": "NetEasyModLoad\\Form1.cs",
               "ToolTip": "C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\NetEasyModLoad\\Form1.cs",
               "RelativeToolTip": "NetEasyModLoad\\Form1.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAuwCQAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAcwFMAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-18T03:14:40.989Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
               "$type": "Document",
@@ -63,18 +75,6 @@
               "ViewState": "AgIAAAkAAAAAAAAAAADwvw4AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-18T03:39:12.433Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [\u8BBE\u8BA1]",
-              "DocumentMoniker": "C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\NetEasyModLoad\\Form1.cs",
-              "RelativeDocumentMoniker": "NetEasyModLoad\\Form1.cs",
-              "ToolTip": "C:\\Users\\Long_\\source\\repos\\NetEasyModLoad\\NetEasyModLoad\\Form1.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "NetEasyModLoad\\Form1.cs [\u8BBE\u8BA1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T03:19:59.221Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
             },
             {
               "$type": "Document",

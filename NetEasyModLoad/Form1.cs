@@ -79,10 +79,16 @@ namespace NetEasyModLoad
                 return;
             }
             label2.Text = "开始加载";
+           
+            Thread thread = new Thread(new ThreadStart(loadJarLogic));
+            thread.Start();
+        }
+
+        private void loadJarLogic()
+        {
             string filePath = gamePath + "/isLoaded.jar";
             FileStream fs = File.Create(filePath);
             fs.Close();
-
             while (true)
             {
                 if (!File.Exists(filePath))
@@ -94,7 +100,7 @@ namespace NetEasyModLoad
                         if (file.Exists)
                         {
                             //true 覆盖已存在的同名文件，false不覆盖
-                            file.CopyTo(gamePath+"/"+fileName, true);
+                            file.CopyTo(gamePath + "/" + fileName, true);
                         }
                         else
                         {
