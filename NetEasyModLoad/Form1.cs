@@ -34,7 +34,7 @@ namespace NetEasyModLoad
                 FileStream fs = File.Create(loaderExePath + @"\config.ini");
                 fs.Close();
             }
-            DirectoryInfo modDinfo = new DirectoryInfo(@"\mods");
+            DirectoryInfo modDinfo = new DirectoryInfo(loaderExePath + @"\mods");
             if (!modDinfo.Exists)
             {
                 modDinfo.Create();
