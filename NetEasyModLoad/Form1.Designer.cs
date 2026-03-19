@@ -95,6 +95,7 @@
             this.label4.Size = new System.Drawing.Size(156, 25);
             this.label4.TabIndex = 5;
             this.label4.Text = "LoongLy Software";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Form1
             // 

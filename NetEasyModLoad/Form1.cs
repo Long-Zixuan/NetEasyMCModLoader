@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -129,6 +130,24 @@ namespace NetEasyModLoad
                 Thread.Sleep(1000);
             }
             label2.Text = "完成加载";
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            string url = @"https://long-zixuan.github.io/html/lain.html";
+            try
+            {
+                Process.Start(url);
+            }
+            catch (System.ComponentModel.Win32Exception noBrowser)
+            {
+                if (noBrowser.ErrorCode == -2147467259)
+                    Console.WriteLine("未检测到已安装的浏览器！");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("发生错误: " + ex.Message);
+            }
         }
     }
 }
