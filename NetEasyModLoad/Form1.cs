@@ -15,42 +15,44 @@ namespace NetEasyModLoad
 {
     public partial class Form1 : Form
     {
-        string gamePath = "";
+        string gamePath_ = "";
 
-        string loaderExePath = "";
-        string configPath = "";
+        string loaderExePath_ = "";
+        string configPath_ = "";
 
-        string[] mods;
+        string[] mods_;
+
+        Thread jarLoadthread_ = null;
 
         public Form1()
         {
             InitializeComponent();
             
-            loaderExePath = System.Windows.Forms.Application.StartupPath;
+            loaderExePath_ = System.Windows.Forms.Application.StartupPath;
 
-            configPath = loaderExePath + @"\config.ini";
-            if (!File.Exists(configPath))
+            configPath_ = loaderExePath_ + @"\config.ini";
+            if (!File.Exists(configPath_))
             {
-                FileStream fs = File.Create(loaderExePath + @"\config.ini");
+                FileStream fs = File.Create(loaderExePath_ + @"\config.ini");
                 fs.Close();
             }
-            DirectoryInfo modDinfo = new DirectoryInfo(loaderExePath + @"\mods");
+            DirectoryInfo modDinfo = new DirectoryInfo(loaderExePath_ + @"\mods");
             if (!modDinfo.Exists)
             {
                 modDinfo.Create();
             }
             //label3.Text = "当前游戏文件夹："+ File.ReadAllText(configPath);
-            gamePath = IniFileHandler.Instance.ReadValue("config", "gamePath", configPath);
-            if (gamePath == "" || gamePath == null)
+            gamePath_ = IniFileHandler.Instance.ReadValue("config", "gamePath", configPath_);
+            if (gamePath_ == "" || gamePath_ == null)
             {
                 label3.Text = "请先设置游戏文件夹";
             }
             else
             {
-                label3.Text = "当前游戏文件夹：" + gamePath;
+                label3.Text = "当前游戏文件夹：" + gamePath_;
             }
             //gamePath = File.ReadAllText(configPath);
-            mods = Directory.GetFiles(loaderExePath+@"\mods", "*.jar");
+            mods_ = Directory.GetFiles(loaderExePath_+@"\mods", "*.jar");
             //MessageBox.Show(mods[0]);
             //MessageBox.Show(loaderExePath);
         }
@@ -63,30 +65,37 @@ namespace NetEasyModLoad
             //folderBrowser.ShowNewFolderButton = true;
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
-                gamePath = folderBrowser.SelectedPath + @"\Game\.minecraft\mods";
-                label3.Text = "当前游戏文件夹："+gamePath;
+                gamePath_ = folderBrowser.SelectedPath + @"\Game\.minecraft\mods";
+                label3.Text = "当前游戏文件夹："+gamePath_;
                 //File.WriteAllText(configPath, gamePath);
-                IniFileHandler.Instance.WriteValue("config", "gamePath", gamePath, configPath);
+                IniFileHandler.Instance.WriteValue("config", "gamePath", gamePath_, configPath_);
             }
                         
         }
 
         private void button_load_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(gamePath))
+            if (!Directory.Exists(gamePath_))
             {
                 MessageBox.Show("文件夹不存在");
                 return;
             }
             label2.Text = "加载中";
-           
-            Thread thread = new Thread(new ThreadStart(loadJarLogic));
-            thread.Start();
+            mods_ = Directory.GetFiles(loaderExePath_ + @"\mods", "*.jar");
+            try
+            {
+                jarLoadthread_.Abort();
+            }
+            catch
+            {
+            }
+            jarLoadthread_ = new Thread(new ThreadStart(loadJarLogic));
+            jarLoadthread_.Start();
         }
 
         private void loadJarLogic()
         {
-            string filePath = gamePath + "/isLoaded.jar";
+            string filePath = gamePath_ + "/isLoaded.jar";
             FileStream fs = File.Create(filePath);
             fs.Close();
             int dotCount = 0;
@@ -94,14 +103,14 @@ namespace NetEasyModLoad
             {
                 if (!File.Exists(filePath))
                 {
-                    foreach (string mod in mods)
+                    foreach (string mod in mods_)
                     {
                         FileInfo file = new FileInfo(mod);
                         string fileName = Path.GetFileName(mod);
                         if (file.Exists)
                         {
                             //true 覆盖已存在的同名文件，false不覆盖
-                            file.CopyTo(gamePath + "/" + fileName, true);
+                            file.CopyTo(gamePath_ + "/" + fileName, true);
                         }
                         else
                         {

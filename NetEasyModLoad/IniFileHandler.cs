@@ -10,17 +10,17 @@ namespace NetEasyModLoad
     
     internal class IniFileHandler
     {
-        static private IniFileHandler _instance = null;
+        static private IniFileHandler instance_s = null;
 
         static public IniFileHandler Instance
         {
             get
             {
-                if (_instance == null)
+                if (instance_s == null)
                 {
-                    _instance = new IniFileHandler();
+                    instance_s = new IniFileHandler();
                 }
-                return _instance;
+                return instance_s;
             }
         }
 

@@ -15,6 +15,11 @@
         {
             if (disposing && (components != null))
             {
+                try
+                {
+                    jarLoadthread_.Abort();
+                }
+                catch { }
                 components.Dispose();
             }
             base.Dispose(disposing);
