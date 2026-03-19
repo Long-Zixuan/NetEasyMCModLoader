@@ -15,11 +15,6 @@
         {
             if (disposing && (components != null))
             {
-                try
-                {
-                    jarLoadthread_.Abort();
-                }
-                catch { }
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -111,6 +106,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "网易我的世界第三方模组加载器";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_Closing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

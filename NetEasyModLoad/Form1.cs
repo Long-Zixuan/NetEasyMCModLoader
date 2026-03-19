@@ -16,44 +16,45 @@ namespace NetEasyModLoad
 {
     public partial class Form1 : Form
     {
-        string gamePath_ = "";
+        static string gamePath_s = "";
 
-        string loaderExePath_ = "";
-        string configPath_ = "";
+        static string loaderExePath_s = "";
+        static string configPath_s = "";
 
-        string[] mods_;
+        static string[] mods_s;
 
         Thread jarLoadthread_ = null;
+        LoadJatThread loadJatThread_ = null;
 
         public Form1()
         {
             InitializeComponent();
             
-            loaderExePath_ = System.Windows.Forms.Application.StartupPath;
+            loaderExePath_s = System.Windows.Forms.Application.StartupPath;
 
-            configPath_ = loaderExePath_ + @"\config.ini";
-            if (!File.Exists(configPath_))
+            configPath_s = loaderExePath_s + @"\config.ini";
+            if (!File.Exists(configPath_s))
             {
-                FileStream fs = File.Create(loaderExePath_ + @"\config.ini");
+                FileStream fs = File.Create(loaderExePath_s + @"\config.ini");
                 fs.Close();
             }
-            DirectoryInfo modDinfo = new DirectoryInfo(loaderExePath_ + @"\mods");
+            DirectoryInfo modDinfo = new DirectoryInfo(loaderExePath_s + @"\mods");
             if (!modDinfo.Exists)
             {
                 modDinfo.Create();
             }
             //label3.Text = "当前游戏文件夹："+ File.ReadAllText(configPath);
-            gamePath_ = IniFileHandler.Instance.ReadValue("config", "gamePath", configPath_);
-            if (gamePath_ == "" || gamePath_ == null)
+            gamePath_s = IniFileHandler.Instance.ReadValue("config", "gamePath", configPath_s);
+            if (gamePath_s == "" || gamePath_s == null)
             {
                 label3.Text = "请先设置游戏文件夹";
             }
             else
             {
-                label3.Text = "当前游戏文件夹：" + gamePath_;
+                label3.Text = "当前游戏文件夹：" + gamePath_s;
             }
             //gamePath = File.ReadAllText(configPath);
-            mods_ = Directory.GetFiles(loaderExePath_+@"\mods", "*.jar");
+            mods_s = Directory.GetFiles(loaderExePath_s+@"\mods", "*.jar");
             //MessageBox.Show(mods[0]);
             //MessageBox.Show(loaderExePath);
         }
@@ -66,70 +67,108 @@ namespace NetEasyModLoad
             //folderBrowser.ShowNewFolderButton = true;
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
-                gamePath_ = folderBrowser.SelectedPath + @"\Game\.minecraft\mods";
-                label3.Text = "当前游戏文件夹："+gamePath_;
+                gamePath_s = folderBrowser.SelectedPath + @"\Game\.minecraft\mods";
+                label3.Text = "当前游戏文件夹："+gamePath_s;
                 //File.WriteAllText(configPath, gamePath);
-                IniFileHandler.Instance.WriteValue("config", "gamePath", gamePath_, configPath_);
+                IniFileHandler.Instance.WriteValue("config", "gamePath", gamePath_s, configPath_s);
             }
                         
         }
 
         private void button_load_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(gamePath_))
+            if (!Directory.Exists(gamePath_s))
             {
                 MessageBox.Show("文件夹不存在");
                 return;
             }
             label2.Text = "加载中";
-            mods_ = Directory.GetFiles(loaderExePath_ + @"\mods", "*.jar");
+            mods_s = Directory.GetFiles(loaderExePath_s + @"\mods", "*.jar");
             try
             {
-                jarLoadthread_.Abort();
+                loadJatThread_.Stop();
+                //jarLoadthread_.Abort();
+                loadJatThread_ = null;
             }
             catch
             {
             }
-            jarLoadthread_ = new Thread(new ThreadStart(loadJarLogic));
+            loadJatThread_ = new LoadJatThread(label2);
+            jarLoadthread_ = new Thread(new ThreadStart(loadJatThread_.Run));
             jarLoadthread_.Start();
         }
 
-        private void loadJarLogic()
+        private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
-            string filePath = gamePath_ + "/isLoaded.jar";
-            FileStream fs = File.Create(filePath);
-            fs.Close();
-            int dotCount = 0;
-            while (true)
+            try
             {
-                if (!File.Exists(filePath))
+                //jarLoadthread_.Abort();
+                loadJatThread_.Stop();
+                loadJatThread_ = null;
+            }
+            catch { }
+        }
+
+        private class LoadJatThread
+        {
+            public LoadJatThread(Label label2)
+            {
+                this.label2_ = label2;
+            }
+
+            private Label label2_;
+
+            private volatile bool running_ = true;
+            public bool Running { get { return running_; } }
+
+            public void Stop()
+            {
+                running_ = false;
+            }
+
+            public void Run()
+            {
+                string filePath = gamePath_s + "/isLoaded.jar";
+                FileStream fs = File.Create(filePath);
+                fs.Close();
+                int dotCount = 0;
+                while (running_)
                 {
-                    foreach (string mod in mods_)
+                    if (!File.Exists(filePath))
                     {
-                        FileInfo file = new FileInfo(mod);
-                        string fileName = Path.GetFileName(mod);
-                        if (file.Exists)
+                        foreach (string mod in mods_s)
                         {
-                            //true 覆盖已存在的同名文件，false不覆盖
-                            file.CopyTo(gamePath_ + "/" + fileName, true);
+                            FileInfo file = new FileInfo(mod);
+                            string fileName = Path.GetFileName(mod);
+                            if (file.Exists)
+                            {
+                                //true 覆盖已存在的同名文件，false不覆盖
+                                file.CopyTo(gamePath_s + "/" + fileName, true);
+                            }
+                            else
+                            {
+                                MessageBox.Show("文件" + mod + "不存在");
+                            }
                         }
-                        else
+                        break;
+                    }
+                    try
+                    {//防止某些计算机设置了不让主线程以外的线程访问控件
+                        label2_.Text += ".";
+                        dotCount++;
+                        if (dotCount > 5)
                         {
-                            MessageBox.Show("文件" + mod + "不存在");
+                            dotCount = 0;
+                            label2_.Text = "加载中";
                         }
                     }
-                    break;
+                    catch { }
+                    Thread.Sleep(1000);
                 }
-                label2.Text += ".";
-                dotCount++;
-                if (dotCount > 5) 
-                {
-                    dotCount = 0;
-                    label2.Text = "加载中";
-                }
-                Thread.Sleep(1000);
+                try
+                { label2_.Text = "完成加载"; }
+                catch { }
             }
-            label2.Text = "完成加载";
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -148,6 +187,11 @@ namespace NetEasyModLoad
             {
                 Console.WriteLine("发生错误: " + ex.Message);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
