@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace NetEasyModLoad
 {
@@ -80,7 +81,7 @@ namespace NetEasyModLoad
         {
             if (!Directory.Exists(gamePath_s))
             {
-                System.Windows.MessageBox.Show("文件夹不存在","网易第三方模组加载器", MessageBoxButton.OK, MessageBoxImage.Question);
+                MessageBox.Show("文件夹不存在","网易第三方模组加载器", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 return;
             }
             label2.Text = "加载中";
@@ -148,7 +149,7 @@ namespace NetEasyModLoad
                             }
                             else
                             {
-                                System.Windows.MessageBox.Show("文件" + mod + "不存在","网易第三方模组加载器错误", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                MessageBox.Show("文件" + mod + "不存在","网易第三方模组加载器错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         break;
