@@ -148,7 +148,7 @@ namespace NetEasyModLoad
                             }
                             else
                             {
-                                System.Windows.Forms.MessageBox.Show("文件" + mod + "不存在");
+                                System.Windows.MessageBox.Show("文件" + mod + "不存在","网易第三方模组加载器错误", MessageBoxButton.OK, MessageBoxImage.Warning);
                             }
                         }
                         break;
