@@ -81,7 +81,7 @@ namespace NetEasyModLoad
         {
             if (!Directory.Exists(gamePath_s))
             {
-                MessageBox.Show("文件夹不存在","网易第三方模组加载器", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("文件夹不存在","网易第三方模组加载器", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             label2.Text = "加载中";
