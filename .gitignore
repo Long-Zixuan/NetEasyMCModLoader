@@ -1,4 +1,5 @@
 # User-specific stuff
 .vs/
-.bin/
-.obj/
+.NetEasyModLoad/bin/
+.NetEasyModLoad/obj/
+.NetEasyModLoad/vs/
