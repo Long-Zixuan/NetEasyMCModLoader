@@ -39,9 +39,10 @@
             // 
             // choose_button
             // 
-            this.choose_button.Location = new System.Drawing.Point(66, 31);
+            this.choose_button.Location = new System.Drawing.Point(59, 22);
+            this.choose_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.choose_button.Name = "choose_button";
-            this.choose_button.Size = new System.Drawing.Size(637, 53);
+            this.choose_button.Size = new System.Drawing.Size(573, 38);
             this.choose_button.TabIndex = 0;
             this.choose_button.Text = "选择网易我的世界文件夹(MCLDownload)";
             this.choose_button.UseVisualStyleBackColor = true;
@@ -49,9 +50,10 @@
             // 
             // button_load
             // 
-            this.button_load.Location = new System.Drawing.Point(66, 126);
+            this.button_load.Location = new System.Drawing.Point(59, 91);
+            this.button_load.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_load.Name = "button_load";
-            this.button_load.Size = new System.Drawing.Size(637, 59);
+            this.button_load.Size = new System.Drawing.Size(573, 42);
             this.button_load.TabIndex = 1;
             this.button_load.Text = "加载";
             this.button_load.UseVisualStyleBackColor = true;
@@ -60,43 +62,44 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 91);
+            this.label1.Location = new System.Drawing.Point(59, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 25);
+            this.label1.Size = new System.Drawing.Size(0, 18);
             this.label1.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 191);
+            this.label2.Location = new System.Drawing.Point(59, 138);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 25);
+            this.label2.Size = new System.Drawing.Size(0, 18);
             this.label2.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(66, 91);
+            this.label3.Location = new System.Drawing.Point(59, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 25);
+            this.label3.Size = new System.Drawing.Size(62, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "label3";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(611, 194);
+            this.label4.Location = new System.Drawing.Point(550, 140);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 25);
+            this.label4.Size = new System.Drawing.Size(152, 18);
             this.label4.TabIndex = 5;
             this.label4.Text = "LoongLy Software";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 228);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(701, 164);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -104,7 +107,11 @@
             this.Controls.Add(this.button_load);
             this.Controls.Add(this.choose_button);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "网易我的世界第三方模组加载器";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_Closing);
             this.Load += new System.EventHandler(this.Form1_Load);
